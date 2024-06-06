@@ -6,3 +6,4 @@ A list of handy linux commands and what they do
 -list all files     ls-a                           list all files in dir inc hidden
 -print to console   cat X                          prints file content to console
 -pretty tasks       htop                           pretty process monitor (task manager)
+-create             touch x                        creates an empty file
