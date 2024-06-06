@@ -1,0 +1,8 @@
+A list of handy linux commands and what they do
+
+-find               find /home -name *.jpg         find files if name is known
+-unzip              tar -xzf archive.tar.gz        Extract the gzip-compressed TAR archive named archive.tar.gz.
+-list files         ls                             list non hidden files in dir
+-list all files     ls-a                           list all files in dir inc hidden
+-print to console   cat X                          prints file content to console
+-pretty tasks       htop                           pretty process monitor (task manager)

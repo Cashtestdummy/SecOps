@@ -1,0 +1,7 @@
+A Collection of useful nmap commands
+
+-sC	                nmap 192.168.1.1 -sC	                            Scan with default NSE scripts. Considered useful for discovery and safe
+-script default	    nmap 192.168.1.1 -script default	                Scan with default NSE scripts. Considered useful for discovery and safe
+-O	                nmap 192.168.1.1 -O	                                Remote OS detection using TCP/IP stack fingerprinting
+-sV	                nmap 192.168.1.1 -sV	                            Attempts to determine the version of the service running on port
+-p	                nmap 192.168.1.1 -p 21	                            Port scan for port x
