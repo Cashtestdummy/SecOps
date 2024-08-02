@@ -1,0 +1,5 @@
+#Send suspicious hash to virus total
+curl -v --request POST --url 'https://www.virustotal.com/vtapi/v2/file/report' -d apikey=<Vt-api-key> -d 'resource=<SUSPICOUS_FILE_HASH>'
+
+#Send suspicious file to virus total
+curl -v -F 'file=/<PATH TO FILE>/<SUS FILE NAME>' -F apikey=<Vt-api-key> https://www.virustotal.com/vtapi/v2/file/scan
