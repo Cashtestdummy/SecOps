@@ -1,0 +1,7 @@
+Sign powershell scripts
+Set-AuthenticodeSignature 'c:\Temp\MkAdmin.ps1'  @(Get-ChildItem cert:\CurrentUser\My -codesign)[0]
+
+Get processes
+Get-NetTCPConnection -State Listen | Select-Object -Property *, `
+    @{'Name' = 'ProcessName';'Expression'={(Get-Process -Id $_.OwningProcess).Name}} `
+    | select ProcessName,LocalAddress,LocalPort
