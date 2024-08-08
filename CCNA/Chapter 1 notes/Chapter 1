@@ -1,0 +1,33 @@
+Chapter 1 - Intro to TCP/IP
+
+TCP IP Model
+
+Layers	        Examples
+Application	    HTTPS,POP3, SMTP
+Transport	    TCP,UDP
+Network	        IP,ICMP
+Data Link	    Ethernet, 802.11
+Physical	    Ethernet, 802.11
+---------------------------------
+
+KEY Facts
+
+    - The application layer doesnt define the application itself more the services the application requires
+    - Tim Bernes-Lee created the 1st web brower and web server in the early 90's
+    - Each device that uses TCP/IP needs a unique address, it also defines how to group hosts together
+    - Ip Host refers to any device regardless of size or power, that has an IP address and connecto to any TCP/IP address
+
+
+---------------------------------
+
+Data incapsulation
+
+  ![tcp encapsulation](tcp data encapsulation.png)
+  ![persctive of data in ecapsulation](data encapsulation.png)
+
+
+----------------------------------
+
+OSI Model
+
+![OSI Model](Osi Model.png)
