@@ -1,0 +1,45 @@
+# Home Network Plan
+
+## 1. Introduction
+This document outlines the steps to create a home network plan starting from the ISP hub to a full mesh network with firewall and managed switches.
+
+## 2. Components Required
+- ISP Hub (Modem/Router)
+- Firewall Appliance
+- Managed Switches
+- Ethernet Cables (Cat5e or Cat6)
+- Wireless Access Points (optional)
+- Network Devices (PCs, Laptops, Smart Devices)
+
+## 3. Network Topology
+The network topology will be a full mesh network, ensuring that each device is connected to every other device for redundancy and reliability.
+
+## 4. Steps to Create the Network
+
+### Step 1: Connect ISP Hub
+1. Connect the ISP hub to the incoming internet line.
+2. Configure the ISP hub with the necessary settings provided by your ISP.
+
+### Step 2: Set Up Firewall
+1. Connect the WAN port of the firewall appliance to the LAN port of the ISP hub.
+2. Configure the firewall with appropriate security settings, including:
+   - Firewall rules
+   - NAT (Network Address Translation)
+   - VPN (Virtual Private Network) settings (if required)
+
+### Step 3: Connect Managed Switches
+1. Connect the LAN port of the firewall appliance to one of the managed switches.
+2. Connect additional managed switches in a full mesh topology using Ethernet cables.
+3. Configure the managed switches with VLANs (Virtual Local Area Networks) if needed.
+
+### Step 4: Connect Network Devices
+1. Connect PCs, laptops, and other network devices to the managed switches using Ethernet cables.
+2. Optionally, connect wireless access points to the managed switches for Wi-Fi coverage.
+
+### Step 5: Test and Verify
+1. Test connectivity between all devices in the network.
+2. Verify that the firewall rules are working as expected.
+3. Ensure that all devices have internet access and can communicate with each other.
+
+## 5. Conclusion
+By following these steps, you can create a robust and secure home network with a full mesh topology, firewall protection, and managed switches for efficient network management.
