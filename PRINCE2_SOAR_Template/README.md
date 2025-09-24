@@ -1,289 +1,416 @@
-# PRINCE2 SOAR Project Template
+# PRINCE2 SOAR Automation Template
 
-## Project Overview
-This template provides a structured approach to SOAR (Security Orchestration, Automation, and Response) projects following PRINCE2 methodology principles.
+## Overview
+This template provides a structured approach for designing, approving, and documenting individual SOAR (Security Orchestration, Automation, and Response) automation workflows/playbooks following PRINCE2 governance principles.
 
 ---
 
-## 1. Project Mandate
+## 1. Automation Definition
 
-### Project Title
-[Insert SOAR Project Name]
+### Automation Name
+**Automation ID:** [AUTO-YYYY-###]
+**Name:** [Descriptive automation name]
+**Version:** [1.0]
+**Created By:** [Developer Name]
+**Date Created:** [YYYY-MM-DD]
+**Last Modified:** [YYYY-MM-DD]
 
-### Project Purpose
+### Purpose & Objectives
 **Business Need:**
-- [Define the security challenge or operational inefficiency being addressed]
-- [Specify the need for automation and orchestration]
+- [Define the specific security challenge or operational inefficiency]
+- [Specify the manual process being automated]
+- [Justify the automation requirement]
 
-**Project Objectives:**
-- Implement automated incident response workflows
-- Reduce mean time to detection (MTTD) and response (MTTR)
-- Improve security team efficiency through orchestration
-- Enhance threat intelligence integration
+**Automation Objectives:**
+- [ ] Reduce manual intervention for [specific task]
+- [ ] Improve response time from [X] minutes to [Y] minutes
+- [ ] Standardize [specific process] across security operations
+- [ ] Enhance accuracy of [specific activity]
+- [ ] Enable 24/7 automated response for [scenario]
 
-### Success Criteria
-- [ ] Automated response for [X]% of security incidents
-- [ ] Reduction in manual tasks by [X]%
-- [ ] Integration with [X] security tools
-- [ ] Response time improvement of [X]%
-
----
-
-## 2. Business Case
-
-### Investment Appraisal
-**Costs:**
-- SOAR platform licensing: $[X]
-- Implementation services: $[X]
-- Training and certification: $[X]
-- Ongoing maintenance: $[X]/year
-
-**Benefits:**
-- Reduced incident response time
-- Lower operational costs
-- Improved security posture
-- Enhanced compliance reporting
-
-**Return on Investment (ROI):**
-- Expected ROI: [X]% over [X] years
-- Break-even point: [X] months
-
-### Risk Assessment
-- **Low:** Minor disruption during implementation
-- **Medium:** Integration complexity with legacy systems
-- **High:** Skills gap in SOAR platform management
+**Success Criteria:**
+- [ ] Automation executes successfully in [X]% of triggered scenarios
+- [ ] Reduces manual effort by [X] hours per incident
+- [ ] Maintains accuracy rate of [X]%
+- [ ] Completes execution within [X] minutes
 
 ---
 
-## 3. Project Plan
+## 2. Trigger & Activation
 
-### Key Stages
+### Trigger Source
+**Primary Trigger:**
+- [ ] SIEM Alert: [Alert name/type]
+- [ ] EDR Detection: [Detection rule]
+- [ ] Email Security: [Email classification]
+- [ ] Network Monitoring: [Network event type]
+- [ ] Threat Intelligence: [IOC match]
+- [ ] Manual Trigger: [User-initiated]
+- [ ] Scheduled: [Time-based execution]
+- [ ] API Call: [External system trigger]
+- [ ] Other: [Specify]
 
-#### Pre-Project (Initiation)
-- [ ] Stakeholder identification
-- [ ] Initial requirements gathering
-- [ ] Budget approval
-- [ ] Project team assembly
+**Trigger Criteria:**
+```
+[Define specific conditions that must be met]
+Example:
+- Alert severity >= High
+- Source IP not in whitelist
+- Alert count > 5 in 10 minutes
+```
 
-#### Stage 1: Design & Planning
-**Duration:** [X] weeks
-- [ ] Detailed requirements analysis
-- [ ] SOAR platform selection
-- [ ] Integration architecture design
-- [ ] Playbook identification and prioritization
+### Pre-conditions
+**System Requirements:**
+- [ ] SOAR platform version [X.Y] or higher
+- [ ] Integration with [System A, System B, System C]
+- [ ] API access to [required systems]
+- [ ] Credentials configured for [service accounts]
 
-#### Stage 2: Implementation
-**Duration:** [X] weeks
-- [ ] SOAR platform deployment
-- [ ] Tool integrations configuration
-- [ ] Playbook development and testing
-- [ ] User training delivery
+**Data Requirements:**
+- [ ] [Required field 1] must be present
+- [ ] [Required field 2] must be valid format
+- [ ] [Data source] must be accessible
 
-#### Stage 3: Deployment & Handover
-**Duration:** [X] weeks
-- [ ] Production deployment
-- [ ] Performance monitoring setup
-- [ ] Documentation handover
-- [ ] Support transition
-
----
-
-## 4. Initiation Documentation
-
-### Project Definition
-**Scope:**
-- In Scope: [List included deliverables and activities]
-- Out of Scope: [List excluded items]
-
-**Assumptions:**
-- [List key assumptions about resources, timeline, etc.]
-
-**Constraints:**
-- Budget: $[X]
-- Timeline: [X] months
-- Resources: [X] FTE
-- Technical: [List technical constraints]
-
-### Quality Expectations
-- All integrations must pass security testing
-- Playbooks must achieve [X]% automation rate
-- System availability target: [X]%
-- Documentation must meet organizational standards
+**Environmental Prerequisites:**
+- [ ] [Specific conditions that must exist]
+- [ ] [Network connectivity requirements]
+- [ ] [Time-based constraints]
 
 ---
 
-## 5. Roles & Responsibilities
+## 3. Workflow Design
 
-### Executive Level
-- **Executive Sponsor:** [Name]
-  - Strategic oversight and budget approval
-  - Issue escalation resolution
+### Steps/Workflow (Pseudocode and Logic)
 
-### Project Management
-- **Project Manager:** [Name]
-  - Overall project delivery
-  - Stakeholder communication
-  - Risk and issue management
+```pseudocode
+1. TRIGGER_RECEIVED
+   IF trigger_criteria_met THEN
+      PROCEED to step 2
+   ELSE
+      LOG "Criteria not met" AND EXIT
 
-### Technical Team
-- **SOAR Architect:** [Name]
-  - Platform design and configuration
-  - Integration oversight
+2. DATA_COLLECTION
+   GATHER required_data FROM [source_systems]
+   VALIDATE data_completeness
+   IF validation_failed THEN
+      ESCALATE to human_analyst AND EXIT
 
-- **Security Engineers:** [Names]
-  - Playbook development
-  - Tool integrations
-  - Testing and validation
+3. ANALYSIS_PHASE
+   ANALYZE collected_data
+   DETERMINE threat_severity
+   CALCULATE risk_score
 
-- **IT Operations:** [Name]
-  - Infrastructure support
-  - Deployment assistance
+4. DECISION_POINT
+   IF risk_score > threshold THEN
+      PROCEED to containment
+   ELSE IF risk_score = medium THEN
+      PROCEED to monitoring
+   ELSE
+      PROCEED to logging_only
 
-### Business Users
-- **SOC Manager:** [Name]
-  - Requirements definition
-  - User acceptance testing
-  - Training coordination
+5. CONTAINMENT_ACTIONS
+   EXECUTE [specific containment steps]
+   VERIFY action_success
+   UPDATE ticket_status
 
----
+6. NOTIFICATION
+   SEND notification TO [stakeholder_list]
+   CREATE incident_record
+   UPDATE dashboard
 
-## 6. Risk & Issue Log
+7. COMPLETION
+   LOG automation_results
+   UPDATE metrics
+   CLOSE automation_instance
+```
 
-### Risk Register
+### Detailed Step Breakdown
 
-| ID | Risk Description | Probability | Impact | Mitigation Strategy | Owner | Status |
-|----|------------------|-------------|--------|-------------------|-------|--------|
-| R001 | Integration complexity | Medium | High | Proof of concept development | Tech Lead | Open |
-| R002 | Skills shortage | High | Medium | External training program | PM | Open |
-| R003 | Budget overrun | Low | High | Regular budget reviews | PM | Open |
+**Step 1: [Step Name]**
+- **Action:** [Detailed description]
+- **Systems Involved:** [List systems]
+- **Expected Duration:** [X] seconds
+- **Success Criteria:** [How to determine success]
+- **Failure Handling:** [What to do if step fails]
 
-### Issue Log
+**Step 2: [Step Name]**
+- **Action:** [Detailed description]
+- **Systems Involved:** [List systems]
+- **Expected Duration:** [X] seconds
+- **Success Criteria:** [How to determine success]
+- **Failure Handling:** [What to do if step fails]
 
-| ID | Issue Description | Priority | Impact | Action Required | Owner | Due Date | Status |
-|----|-------------------|----------|--------|----------------|-------|----------|--------|
-| I001 | [Example issue] | High | Medium | [Action needed] | [Owner] | [Date] | Open |
-
----
-
-## 7. Communication Plan
-
-### Stakeholder Matrix
-
-| Stakeholder | Interest | Influence | Communication Method | Frequency |
-|-------------|----------|-----------|---------------------|----------|
-| Executive Sponsor | High | High | Executive dashboard | Weekly |
-| SOC Team | High | Medium | Team meetings | Bi-weekly |
-| IT Operations | Medium | Medium | Technical reviews | Monthly |
-| Security Management | High | High | Status reports | Weekly |
-
-### Communication Schedule
-- **Daily Standups:** Development team (15 min)
-- **Weekly Status:** Steering committee (1 hour)
-- **Monthly Reviews:** All stakeholders (2 hours)
-- **Quarterly Reviews:** Executive level (1 hour)
+[Continue for each step...]
 
 ---
 
-## 8. Quality Controls
+## 4. Inputs & Outputs
 
-### Quality Criteria
+### Required Inputs
+| Input Field | Data Type | Source | Required | Validation Rules |
+|-------------|-----------|---------|----------|-----------------|
+| [Field1] | String | [System A] | Yes | [Validation criteria] |
+| [Field2] | Integer | [System B] | No | [Validation criteria] |
+| [Field3] | JSON | [API Call] | Yes | [Validation criteria] |
 
-#### Technical Quality
-- [ ] All integrations pass security scanning
-- [ ] Playbooks achieve minimum automation percentage
-- [ ] Performance benchmarks met
-- [ ] Disaster recovery tested
+### Expected Outputs
+| Output Field | Data Type | Destination | Description |
+|--------------|-----------|-------------|-------------|
+| [Result1] | Boolean | [Dashboard] | [Success/failure status] |
+| [Result2] | String | [Ticket System] | [Detailed findings] |
+| [Result3] | Array | [Log Server] | [List of actions taken] |
 
-#### Documentation Quality
-- [ ] Technical documentation complete
-- [ ] User guides available
-- [ ] Runbooks documented
-- [ ] Training materials prepared
-
-### Testing Strategy
-- **Unit Testing:** Individual playbook components
-- **Integration Testing:** End-to-end workflow validation
-- **User Acceptance Testing:** Business process verification
-- **Security Testing:** Vulnerability and penetration testing
-
----
-
-## 9. Stage Boundaries
-
-### Stage Gate Criteria
-
-#### Stage 1 → Stage 2 Gate
-**Entry Criteria:**
-- [ ] Requirements approved
-- [ ] Architecture design signed off
-- [ ] Resource allocation confirmed
-- [ ] Risk assessment completed
-
-**Exit Criteria:**
-- [ ] Implementation plan approved
-- [ ] Test environment ready
-- [ ] Team trained on platform
-
-#### Stage 2 → Stage 3 Gate
-**Entry Criteria:**
-- [ ] Development completed
-- [ ] Testing passed
-- [ ] User training delivered
-- [ ] Production environment ready
-
-**Exit Criteria:**
-- [ ] Go-live successful
-- [ ] Performance targets met
-- [ ] Support handover completed
-- [ ] Project closure approved
+### Artifacts Generated
+- [ ] Incident report in [format]
+- [ ] Evidence package in [location]
+- [ ] Audit trail in [system]
+- [ ] Metrics data in [dashboard]
 
 ---
 
-## 10. Project Controls
+## 5. Governance & Approvals
 
-### Monitoring & Reporting
-- **KPIs:**
-  - Incident response time reduction
-  - Automation percentage achieved
-  - User adoption rate
-  - System availability
+### Approvals Required
+**Design Phase:**
+- [ ] **SOC Manager:** [Name] - Date: [____]
+- [ ] **Security Architect:** [Name] - Date: [____]
+- [ ] **Compliance Officer:** [Name] - Date: [____]
 
-- **Reporting Schedule:**
-  - Weekly: Progress against milestones
-  - Monthly: Budget and resource utilization
-  - Quarterly: Benefits realization
+**Implementation Phase:**
+- [ ] **Change Advisory Board:** Date: [____]
+- [ ] **IT Operations Manager:** [Name] - Date: [____]
+- [ ] **Risk Management:** [Name] - Date: [____]
 
-### Change Control
-- All changes require impact assessment
-- Changes >$X or >2 weeks require steering committee approval
-- Emergency changes follow expedited process
+**Production Deployment:**
+- [ ] **Security Director:** [Name] - Date: [____]
+- [ ] **Final Technical Review:** [Name] - Date: [____]
+
+### Stakeholder Review
+**Primary Stakeholders:**
+| Stakeholder | Role | Review Focus | Sign-off Required |
+|-------------|------|--------------|-------------------|
+| [Name] | SOC Manager | Operational impact | Yes |
+| [Name] | Security Analyst | Technical accuracy | Yes |
+| [Name] | Compliance | Regulatory alignment | Yes |
+| [Name] | IT Operations | Infrastructure impact | No |
+
+**Review Schedule:**
+- **Initial Review:** [Date]
+- **Technical Review:** [Date]
+- **Business Review:** [Date]
+- **Final Approval:** [Date]
 
 ---
 
-## 11. Lessons Learned & Continuous Improvement
+## 6. Quality Assurance
 
-### Post-Implementation Review
-- [ ] Benefits realization assessment
-- [ ] Lessons learned documentation
-- [ ] Process improvement recommendations
-- [ ] Knowledge transfer completion
+### Testing & Validation
 
-### Success Metrics
-- Project delivered on time: [Y/N]
-- Project delivered on budget: [Y/N]
-- Benefits realized: [X]%
-- Stakeholder satisfaction: [Rating]
+**Unit Testing:**
+- [ ] Individual step validation
+- [ ] Error handling verification
+- [ ] Input validation testing
+- [ ] Output format verification
+
+**Integration Testing:**
+- [ ] End-to-end workflow testing
+- [ ] System integration verification
+- [ ] API connectivity testing
+- [ ] Cross-platform compatibility
+
+**User Acceptance Testing:**
+- [ ] Business process validation
+- [ ] User interface testing
+- [ ] Performance benchmarking
+- [ ] Security testing
+
+**Test Cases:**
+| Test Case ID | Test Scenario | Expected Result | Actual Result | Status |
+|--------------|---------------|-----------------|---------------|--------|
+| TC001 | [Scenario description] | [Expected outcome] | [Actual outcome] | [Pass/Fail] |
+| TC002 | [Scenario description] | [Expected outcome] | [Actual outcome] | [Pass/Fail] |
+
+**Performance Criteria:**
+- [ ] Execution time < [X] minutes
+- [ ] Memory usage < [X] MB
+- [ ] CPU utilization < [X]%
+- [ ] Success rate > [X]%
+
+---
+
+## 7. Deployment Strategy
+
+### Deployment Plan
+
+**Phase 1: Development Environment**
+- [ ] Code deployment
+- [ ] Initial testing
+- [ ] Bug fixes and refinements
+- [ ] Documentation review
+
+**Phase 2: Staging Environment**
+- [ ] Full integration testing
+- [ ] Performance validation
+- [ ] Security scanning
+- [ ] User acceptance testing
+
+**Phase 3: Production Deployment**
+- [ ] Change window: [Date/Time]
+- [ ] Deployment checklist execution
+- [ ] Post-deployment validation
+- [ ] Monitoring activation
+
+**Deployment Checklist:**
+- [ ] Backup current configuration
+- [ ] Verify system dependencies
+- [ ] Deploy automation code
+- [ ] Configure triggers and thresholds
+- [ ] Test automation execution
+- [ ] Enable monitoring and alerting
+- [ ] Update documentation
+- [ ] Notify stakeholders of completion
+
+**Stage Boundaries:**
+- **Development → Staging:** Code review and unit tests passed
+- **Staging → Production:** All testing completed and approvals obtained
+
+---
+
+## 8. Risk Management
+
+### Rollback & Exception Handling
+
+**Rollback Plan:**
+- [ ] **Trigger Conditions:** [Define when rollback is needed]
+- [ ] **Rollback Procedure:** [Step-by-step rollback process]
+- [ ] **Recovery Time:** [Expected time to rollback]
+- [ ] **Communication Plan:** [Who to notify during rollback]
+
+**Exception Handling:**
+```
+EXCEPTION_TYPE: System_Unavailable
+ACTION: Queue automation for retry
+RETRY_ATTEMPTS: 3
+RETRY_INTERVAL: 5 minutes
+ESCALATION: After 3 failures, alert SOC
+
+EXCEPTION_TYPE: Invalid_Data
+ACTION: Log error and stop execution
+ESCALATION: Immediate alert to analyst
+
+EXCEPTION_TYPE: Permission_Denied
+ACTION: Log security event
+ESCALATION: Alert security team immediately
+```
+
+**Risk Assessment:**
+| Risk | Probability | Impact | Mitigation | Owner |
+|------|-------------|--------|------------|-------|
+| [Risk description] | [Low/Med/High] | [Low/Med/High] | [Mitigation strategy] | [Name] |
+
+---
+
+## 9. Monitoring & Metrics
+
+### Metrics & KPIs
+
+**Operational Metrics:**
+- **Execution Success Rate:** [Target: X%]
+- **Average Execution Time:** [Target: X minutes]
+- **False Positive Rate:** [Target: <X%]
+- **False Negative Rate:** [Target: <X%]
+
+**Business Metrics:**
+- **Time Savings:** [X hours per incident]
+- **Cost Reduction:** [X% operational cost reduction]
+- **Analyst Productivity:** [X% increase]
+- **Response Time Improvement:** [X% faster response]
+
+**Quality Metrics:**
+- **Accuracy Rate:** [Target: X%]
+- **Completeness Rate:** [Target: X%]
+- **Error Rate:** [Target: <X%]
+
+**Monitoring Setup:**
+- [ ] Dashboard configuration
+- [ ] Alert thresholds defined
+- [ ] Reporting schedule established
+- [ ] Trend analysis enabled
+
+### Performance Monitoring
+- **Real-time Monitoring:** [Tools and dashboards]
+- **Historical Analysis:** [Reporting frequency]
+- **Trend Identification:** [Review schedule]
+- **Performance Optimization:** [Improvement process]
+
+---
+
+## 10. Documentation & User Guide
+
+### Technical Documentation
+- [ ] **Architecture Diagram:** [Link to diagram]
+- [ ] **Integration Specifications:** [Link to specs]
+- [ ] **API Documentation:** [Link to API docs]
+- [ ] **Configuration Guide:** [Link to config guide]
+
+### User Documentation
+- [ ] **User Manual:** [How to use the automation]
+- [ ] **Troubleshooting Guide:** [Common issues and solutions]
+- [ ] **FAQ Document:** [Frequently asked questions]
+- [ ] **Training Materials:** [Training slides/videos]
+
+### Operational Documentation
+- [ ] **Runbook:** [Operational procedures]
+- [ ] **Maintenance Guide:** [Maintenance procedures]
+- [ ] **Support Contacts:** [Who to contact for issues]
+- [ ] **Change Log:** [Version history and changes]
+
+### Knowledge Transfer
+- [ ] Technical handover completed
+- [ ] Operational team trained
+- [ ] Documentation reviewed and approved
+- [ ] Support procedures established
+
+---
+
+## 11. Continuous Improvement
+
+### Post-Deployment Review
+- [ ] **Performance Analysis:** [Date: ____]
+- [ ] **User Feedback Collection:** [Date: ____]
+- [ ] **Lessons Learned Documentation:** [Date: ____]
+- [ ] **Improvement Recommendations:** [Date: ____]
+
+### Review Schedule
+- **Weekly:** Operational metrics review
+- **Monthly:** Performance and quality analysis
+- **Quarterly:** Business value assessment
+- **Annually:** Full automation review and optimization
+
+### Optimization Opportunities
+- [ ] Performance improvements identified
+- [ ] Additional automation opportunities
+- [ ] Integration enhancements
+- [ ] Process refinements
 
 ---
 
 ## Template Usage Instructions
 
-1. **Customize** all bracketed placeholders with project-specific information
-2. **Review** each section for relevance to your specific SOAR implementation
-3. **Adapt** the timeline and stages based on project complexity
-4. **Update** risks, issues, and stakeholder information regularly
-5. **Maintain** this document as a living project reference
+1. **Customize** all bracketed placeholders with automation-specific information
+2. **Complete** all checklists as you progress through the automation lifecycle
+3. **Update** the document regularly to reflect current state
+4. **Review** each section for relevance to your specific automation
+5. **Maintain** this document as a living reference throughout the automation lifecycle
+6. **Archive** completed sections for audit and compliance purposes
+
+This template follows PRINCE2 methodology principles adapted for individual SOAR automation development. Modify as needed to align with organizational standards and automation requirements.
 
 ---
 
-*This template follows PRINCE2 methodology principles adapted for SOAR automation projects. Modify as needed to align with organizational standards and project requirements.*
+**Document Control:**
+- **Version:** 1.0
+- **Last Updated:** [Date]
+- **Next Review Date:** [Date]
+- **Document Owner:** [Name]
+- **Approved By:** [Name and Date]
